@@ -107,4 +107,15 @@ class ValidateGetPostInput
 
         return $this->errors;
     }
+
+    /**
+     * Get the value of the $_GET or $_POST input.
+     *
+     * @return string The value of the $_GET or $_POST input.
+     */
+    public function getValue()
+    {
+        return $this->value;
+    }
 }
+

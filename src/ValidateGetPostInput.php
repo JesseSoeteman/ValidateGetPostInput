@@ -39,7 +39,8 @@ class ValidateGetPostInput
      * @param string $key The key of the $_GET or $_POST input.
      * @param ValidateInputSettings $settings The settings for the validation.
      */
-    public function __construct( $key, $settings) {
+    public function __construct($key, $settings)
+    {
         $this->key = $key;
         if (empty($settings)) {
             $this->settings = new ValidateInputSettings();
@@ -58,14 +59,14 @@ class ValidateGetPostInput
         // Getting the value of the $_GET or $_POST input.
         switch ($this->settings->input_type) {
             case get_input:
-                if (!isset($_GET[$this->key])) {
+                if (!isset($_GET[$this->key]) && $this->settings->required) {
                     array_push($this->errors, "This field {$this->key} is required");
                     return $this->errors;
                 }
                 $this->value = $_GET[$this->key];
                 break;
             case post_input:
-                if (!isset($_POST[$this->key])) {
+                if (!isset($_POST[$this->key]) && $this->settings->required) {
                     array_push($this->errors, "This field {$this->key} is required");
                     return $this->errors;
                 }
@@ -74,9 +75,11 @@ class ValidateGetPostInput
         }
 
         // Validating the value of the $_GET or $_POST input.
-        if ($this->settings->required) {
-            if (empty($this->value)) {
+        if (empty($this->value)) {
+            if ($this->settings->required) {
                 array_push($this->errors, "This field {$this->key} is empty");
+            } else {
+                return $this->errors;
             }
         }
 
@@ -118,4 +121,3 @@ class ValidateGetPostInput
         return $this->value;
     }
 }
-

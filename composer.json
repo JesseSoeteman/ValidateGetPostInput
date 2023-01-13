@@ -1,0 +1,20 @@
+{
+    "name": "jesssesoeteman/validate-get-post-input",
+    "description": "This php class lets you validate a POST or GET input.",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "ValidateGetPostInput\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Jesse Soeteman",
+            "email": "jessesoeteman@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.6.0"
+    }
+}

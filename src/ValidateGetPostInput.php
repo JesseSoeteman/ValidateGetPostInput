@@ -1,6 +1,8 @@
 <?php
 
-require_once 'Classes/ValidateInputSettings.php';
+namespace ValidateGetPostInput;
+
+use ValidateGetPostInput\Classes\ValidateInputSettings;
 
 /** 
  * ValidateGetPostInput class to validate

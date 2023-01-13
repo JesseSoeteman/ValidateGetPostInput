@@ -1,5 +1,7 @@
 <?php
 
+namespace ValidateGetPostInput\Classes;
+
 define('get_input', 0);
 define('post_input', 1);
 

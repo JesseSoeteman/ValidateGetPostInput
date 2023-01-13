@@ -1,5 +1,5 @@
 {
-    "name": "jesssesoeteman/validate-get-post-input",
+    "name": "jessesoeteman/validate-get-post-input",
     "description": "This php class lets you validate a POST or GET input.",
     "type": "library",
     "license": "MIT",

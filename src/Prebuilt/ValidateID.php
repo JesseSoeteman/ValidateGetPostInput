@@ -2,13 +2,8 @@
 
 namespace ValidateGetPostInput\Prebuilt;
 
-define('get_input', 0);
-define('post_input', 1);
-
-define('no_pattern', 0);
-
-use ValidateGetPostInput\ValidateGetPostInput;
 use ValidateGetPostInput\Classes\ValidateInputSettings;
+use ValidateGetPostInput\ValidateGetPostInput;
 
 /**
  * ValidateID class to set the settings for the validation.

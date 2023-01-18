@@ -94,23 +94,54 @@ class ValidateGetPostInput
                     array_push($this->errors, "Invalid email address format in field {$this->key}");
                 }
                 break;
+            case regex_pattern:
+                if (!preg_match($this->settings->regex_pattern, $this->value)) {
+                    array_push($this->errors, "Invalid format in field {$this->key}");
+                }
+                break;
         }
 
-        // Validating the value for the set min length.
-        if ($this->settings->min_length > 0) {
-            if (strlen($this->value) < $this->settings->min_length) {
-                $plural_suffix = $this->settings->min_length == 1 ? "" : "s";
-                array_push($this->errors, "This field {$this->key} must be at least " . $this->settings->min_length . " character{$plural_suffix} long");
+        if ($this->settings->isString) {
+            if (!is_string($this->value)) {
+                array_push($this->errors, "This field {$this->key} is not a string");
             }
+
+            // Validating the value for the set min length.
+            if ($this->settings->min > 0) {
+                if (strlen($this->value) < $this->settings->min) {
+                    $plural_suffix = $this->settings->min == 1 ? "" : "s";
+                    array_push($this->errors, "This field {$this->key} must be at least " . $this->settings->min . " character{$plural_suffix} long");
+                }
+            }
+    
+            // Validating the value for the set max length.
+            if ($this->settings->max > 0) {
+                if (strlen($this->value) > $this->settings->max) {
+                    $plural_suffix = $this->settings->max == 1 ? "" : "s";
+                    array_push($this->errors, "This field {$this->key} can be at most " . $this->settings->max . " character{$plural_suffix} long");
+                }
+            }
+        } else {
+            if (!is_numeric($this->value)) {
+                array_push($this->errors, "This field {$this->key} is not a number");
+            }
+            
+            // Validating the value for the set min value.
+            if ($this->settings->min > 0) {
+                if ($this->value < $this->settings->min) {
+                    array_push($this->errors, "This field {$this->key} must be at least " . $this->settings->min);
+                }
+            }
+    
+            // Validating the value for the set max value.
+            if ($this->settings->max > 0) {
+                if ($this->value > $this->settings->max) {
+                    array_push($this->errors, "This field {$this->key} can be at most " . $this->settings->max);
+                }
+            }
+
         }
 
-        // Validating the value for the set max length.
-        if ($this->settings->max_length > 0) {
-            if (strlen($this->value) > $this->settings->max_length) {
-                $plural_suffix = $this->settings->max_length == 1 ? "" : "s";
-                array_push($this->errors, "This field {$this->key} can be at most " . $this->settings->max_length . " character{$plural_suffix} long");
-            }
-        }
 
         return $this->errors;
     }

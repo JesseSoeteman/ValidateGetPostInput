@@ -7,6 +7,7 @@ define('post_input', 1);
 
 define('no_pattern', 0);
 define('validate_email_pattern', 1);
+define('regex_pattern', 2);
 
 /**
  * ValidateInputSettings class to store the settings for the validation.
@@ -33,34 +34,48 @@ class ValidateInputSettings
      */
     public int $pattern;
     /**
-     * @var int $min_length The minimum length of the input.
+     * @var string $regex_pattern The regex pattern to validate the input against.
      */
-    public int $min_length;
+    public string $regex_pattern;
     /**
-     * @var int $max_length The maximum length of the input.
+     * @var bool $isString Whether the input is a string or a number.
      */
-    public int $max_length;
+    public bool $isString;
+    /**
+     * @var int $min The minimum length of the input when the input is a string. Otherwise the minimum value of the input as a number.
+     */
+    public int $min;
+    /**
+     * @var int $max The maximum length of the input when the input is a string. Otherwise the maximum value of the input as a number.
+     */
+    public int $max;
 
     /**
      * Constructor for the ValidateInputSettings class.
      *
      * @param int $input_type The type of input to validate. 0 = $_GET, 1 = $_POST.
      * @param bool $required Whether the input is required.
-     * @param int $pattern The pattern to validate the input against. 0 = no pattern, 1 = validate email.
-     * @param int $min_length The minimum length of the input.
-     * @param int $max_length The maximum length of the input.
+     * @param int $pattern The pattern to validate the input against. 0 = no pattern, 1 = validate email, 2 = regex pattern.
+     * @param string $regex_pattern The regex pattern to validate the input against, only used when $pattern = 2.
+     * @param bool $isString Whether the input is a string or a number.
+     * @param int $min The minimum length of the input when the input is a string. Otherwise the minimum value of the input as a number.
+     * @param int $max The maximum length of the input when the input is a string. Otherwise the maximum value of the input as a number.
      */
     public function __construct(
         $input_type = get_input,
         $required = false,
         $pattern = no_pattern,
-        $min_length = 0,
-        $max_length = 0
+        $regex_pattern = "",
+        $isString = true,
+        $min = null,
+        $max = null,
     ) {
         $this->input_type = $input_type;
         $this->required = $required;
         $this->pattern = $pattern;
-        $this->min_length = $min_length;
-        $this->max_length = $max_length;
+        $this->regex_pattern = $regex_pattern;
+        $this->isString = $isString;
+        $this->min = $min;
+        $this->max = $max;
     }
 }

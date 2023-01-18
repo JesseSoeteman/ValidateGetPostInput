@@ -67,8 +67,8 @@ class ValidateInputSettings
         $pattern = no_pattern,
         $regex_pattern = "",
         $isString = true,
-        $min = 0,
-        $max = 0,
+        $min = null,
+        $max = null,
     ) {
         $this->input_type = $input_type;
         $this->required = $required;

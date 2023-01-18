@@ -2,6 +2,11 @@
 
 namespace ValidateGetPostInput\Prebuilt;
 
+define('get_input', 0);
+define('post_input', 1);
+
+define('validate_email_pattern', 1);
+
 use ValidateGetPostInput\ValidateGetPostInput;
 use ValidateGetPostInput\Classes\ValidateInputSettings;
 

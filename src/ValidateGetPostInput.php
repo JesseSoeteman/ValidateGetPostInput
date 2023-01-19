@@ -294,6 +294,11 @@ class ValidateGetPostInput
             array_push($this->errors, "This field `{$this->key}` is not a json object");
         }
 
+        // Check if there is any data in the json object.
+        if (empty($decoded)) {
+            array_push($this->errors, "This field `{$this->key}` is empty");
+        }
+
         // Converting the value to a json object.
         $this->value = $decoded;
     }

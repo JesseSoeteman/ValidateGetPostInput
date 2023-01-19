@@ -23,9 +23,9 @@ class ValidateGetPostInput
      */
     private string $key = "";
     /**
-     * @var string $value The value of the $_GET or $_POST input.
+     * @var string|int $value The value of the $_GET or $_POST input.
      */
-    private string $value = "";
+    private string|int $value = "";
     /**
      * @var ValidateInputSettings $settings The settings for the validation.
      */

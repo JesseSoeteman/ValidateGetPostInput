@@ -2,8 +2,13 @@
 
 namespace ValidateGetPostInput\Prebuilt;
 
-use ValidateGetPostInput\Classes\ValidateInputSettings;
+use ValidateGetPostInput\Statics\RequestType;
+use ValidateGetPostInput\Statics\Pattern;
+
 use ValidateGetPostInput\ValidateGetPostInput;
+use ValidateGetPostInput\Classes\ValidateInputSettings;
+
+
 
 /**
  * ValidateEmail class to set the settings for the validation.
@@ -18,11 +23,11 @@ use ValidateGetPostInput\ValidateGetPostInput;
  */
 class ValidateEmail extends ValidateGetPostInput
 {
-    public function __construct($key, $request_type = get_input, $required = true)
+    public function __construct($key, $request_type = RequestType::GET, $required = true)
     {
         $settings = new ValidateInputSettings();
         $settings->input_type = $request_type;
-        $settings->pattern = validate_email_pattern;
+        $settings->pattern = Pattern::VALIDATE_EMAIL;
         $settings->required = $required;
         $settings->isString = true;
         $settings->min = 1;

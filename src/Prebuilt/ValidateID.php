@@ -2,6 +2,8 @@
 
 namespace ValidateGetPostInput\Prebuilt;
 
+use ValidateGetPostInput\Statics\RequestType;
+
 use ValidateGetPostInput\Classes\ValidateInputSettings;
 use ValidateGetPostInput\ValidateGetPostInput;
 
@@ -18,7 +20,7 @@ use ValidateGetPostInput\ValidateGetPostInput;
  */
 class ValidateID extends ValidateGetPostInput
 {
-    public function __construct($key, $request_type = get_input, $required = true)
+    public function __construct($key, $request_type = RequestType::GET, $required = true)
     {
         $settings = new ValidateInputSettings();
         $settings->input_type = $request_type;

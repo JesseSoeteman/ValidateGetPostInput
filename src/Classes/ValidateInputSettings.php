@@ -2,12 +2,8 @@
 
 namespace ValidateGetPostInput\Classes;
 
-define('get_input', 0);
-define('post_input', 1);
-
-define('no_pattern', 0);
-define('validate_email_pattern', 1);
-define('regex_pattern', 2);
+use ValidateGetPostInput\Statics\RequestType;
+use ValidateGetPostInput\Statics\Pattern;
 
 /**
  * ValidateInputSettings class to store the settings for the validation.
@@ -62,13 +58,13 @@ class ValidateInputSettings
      * @param int $max The maximum length of the input when the input is a string. Otherwise the maximum value of the input as a number.
      */
     public function __construct(
-        $input_type = get_input,
+        $input_type = RequestType::GET,
         $required = false,
-        $pattern = no_pattern,
+        $pattern = Pattern::NO_PATTERN,
         $regex_pattern = "",
         $isString = true,
         $min = null,
-        $max = null,
+        $max = null
     ) {
         $this->input_type = $input_type;
         $this->required = $required;

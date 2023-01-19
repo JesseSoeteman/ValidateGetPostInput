@@ -2,6 +2,9 @@
 
 namespace ValidateGetPostInput;
 
+use ValidateGetPostInput\Statics\RequestType;
+use ValidateGetPostInput\Statics\Pattern;
+
 use ValidateGetPostInput\Classes\ValidateInputSettings;
 
 /** 
@@ -58,7 +61,7 @@ class ValidateGetPostInput
     {
         // Getting the value of the $_GET or $_POST input.
         switch ($this->settings->input_type) {
-            case get_input:
+            case RequestType::GET:
                 if (!isset($_GET[$this->key])) {
                     if ($this->settings->required) {
                         array_push($this->errors, "This field {$this->key} is required");
@@ -68,7 +71,7 @@ class ValidateGetPostInput
                 }
                 $this->value = $_GET[$this->key];
                 break;
-            case post_input:
+            case RequestType::POST:
                 if (!isset($_POST[$this->key])) {
                     if ($this->settings->required) {
                         array_push($this->errors, "This field {$this->key} is required");
@@ -89,12 +92,12 @@ class ValidateGetPostInput
 
         // Validating the value for the set spattern.
         switch ($this->settings->pattern) {
-            case validate_email_pattern:
+            case Pattern::VALIDATE_EMAIL:
                 if (!filter_var($this->value, FILTER_VALIDATE_EMAIL)) {
                     array_push($this->errors, "Invalid email address format in field {$this->key}");
                 }
                 break;
-            case regex_pattern:
+            case Pattern::REGEX:
                 if (!preg_match($this->settings->regex_pattern, $this->value)) {
                     array_push($this->errors, "Invalid format in field {$this->key}");
                 }

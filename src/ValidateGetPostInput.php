@@ -282,8 +282,11 @@ class ValidateGetPostInput
             array_push($this->errors, "This field `{$this->key}` is not a boolean");
         }
 
-        // Converting the value to a boolean.
-        $this->value = (bool) $this->value;
+        if ($this->value == "true") {
+            $this->value = true;
+        } else if ($this->value == "false") {
+            $this->value = false;
+        }
     }
 
     /**

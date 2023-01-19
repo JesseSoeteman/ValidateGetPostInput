@@ -68,9 +68,9 @@ class ValidateInputSettings
      */
     public bool $sanitize;
     /**
-     * @var bool $date_format Whether to check if the input is a valid date. (Only works with DataType::DATE)
+     * @var string $date_format Whether to check if the input is a valid date. (Only works with DataType::DATE)
      */
-    public bool $date_format;
+    public string $date_format;
 
     /**
      * Constructor for the ValidateInputSettings class.
@@ -85,7 +85,7 @@ class ValidateInputSettings
      * @param int $max The maximum length of the input when the input is a string. Otherwise the maximum value of the input as a number. default value is 0.
      * @param bool $trim Whether to trim the input. default value is true.
      * @param bool $sanitize Whether to sanitize the input. default value is true.
-     * @param bool $date_format Whether to check if the input is a valid date. (Only works with DataType::DATE) default value is none.
+     * @param string $date_format Whether to check if the input is a valid date. (Only works with DataType::DATE) default value is none.
      */
     public function __construct(
         $input_type = RequestType::GET,

@@ -80,6 +80,9 @@ class ValidateGetPostInput
             case DataType::JSON_OBJECT:
                 $this->value = json_decode("{}");
                 break;
+            case DataType::DATE:
+                $this->value = new DateTime();
+                break;
         }
 
         // check if the data type is compatible with the pattern.
@@ -275,12 +278,17 @@ class ValidateGetPostInput
     private function validateBoolean(): void
     {
         // Check if the value is a boolean.
-        if (!is_bool($this->value)) {
+        if (!boolval($this->value)) {
             array_push($this->errors, "This field `{$this->key}` is not a boolean");
         }
 
-        // Converting the value to a boolean.
-        $this->value = (bool) $this->value;
+        if ($this->value == "true") {
+            $this->value = true;
+        } else if ($this->value == "false") {
+            $this->value = false;
+        } else {
+            array_push($this->errors, "This field `{$this->key}` is not a boolean");
+        }
     }
 
     /**
@@ -319,7 +327,7 @@ class ValidateGetPostInput
         }
 
         // Check if the value is a date.
-        if (!$this->settings->date_format == DateFormat::NONE) {
+        if ($this->settings->date_format == DateFormat::NONE) {
             return;
         }
 

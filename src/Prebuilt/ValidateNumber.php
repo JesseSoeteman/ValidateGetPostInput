@@ -10,7 +10,7 @@ use ValidateGetPostInput\ValidateGetPostInput;
 
 /**
  * ValidateNumber class to set the settings for the validation.
- * This class is used to validate an ID.
+ * This class is used to validate a number.
  * 
  * - The value must be a number.
  * - The request type is GET. (this can be changed to POST)

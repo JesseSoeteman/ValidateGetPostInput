@@ -60,28 +60,32 @@ class ValidateGetPostInput
     public function validate()
     {
         // Getting the value of the $_GET or $_POST input.
-        switch ($this->settings->input_type) {
-            case RequestType::GET:
-                if (!isset($_GET[$this->key])) {
-                    if ($this->settings->required) {
-                        array_push($this->errors, "This field `{$this->key}` is required");
-                        return $this->errors;
+        {
+            $isset = false;
+            switch ($this->settings->input_type) {
+                case RequestType::GET:
+                    $isset = isset($_GET[$this->key]);
+                    if ($isset) {
+                        $this->value = $_GET[$this->key];
                     }
+                    break;
+                case RequestType::POST:
+                    $isset = isset($_POST[$this->key]);
+                    if ($isset) {
+                        $this->value = $_POST[$this->key];
+                    }
+                    break;
+            }
+            if (!$isset) {
+                if ($this->settings->required) {
+                    array_push($this->errors, "This field `{$this->key}` is required");
                     return $this->errors;
                 }
-                $this->value = $_GET[$this->key];
-                break;
-            case RequestType::POST:
-                if (!isset($_POST[$this->key])) {
-                    if ($this->settings->required) {
-                        array_push($this->errors, "This field `{$this->key}` is required");
-                        return $this->errors;
-                    }
-                    return $this->errors;
-                }
-                $this->value = $_POST[$this->key];
-                break;
+                return $this->errors;
+            }
         }
+
+
         // Validating the value of the $_GET or $_POST input.
         if ($this->settings->required) {
             if (empty($this->value) && $this->value != "0") {
@@ -104,6 +108,7 @@ class ValidateGetPostInput
         }
 
         if ($this->settings->isString) {
+            // Validating the value for the set isString.
             if (!is_string($this->value)) {
                 array_push($this->errors, "This field `{$this->key}` is not a string");
             }
@@ -115,7 +120,7 @@ class ValidateGetPostInput
                     array_push($this->errors, "This field `{$this->key}` must be at least " . $this->settings->min . " character{$plural_suffix} long");
                 }
             }
-    
+
             // Validating the value for the set max length.
             if ($this->settings->max > 0) {
                 if (strlen($this->value) > $this->settings->max) {
@@ -127,17 +132,18 @@ class ValidateGetPostInput
             // Check if the value is a number.
             if (!is_numeric($this->value)) {
                 array_push($this->errors, "This field `{$this->key}` is not a number");
+                return $this->errors;
             }
 
             // Validating the value for the set min value.
-            if ($this->settings->min != null) {
+            if ($this->settings->min != 0) {
                 if ($this->value < $this->settings->min) {
                     array_push($this->errors, "This field `{$this->key}` must be at least " . $this->settings->min);
                 }
             }
-    
+
             // Validating the value for the set max value.
-            if ($this->settings->max != null) {
+            if ($this->settings->max != 0) {
                 if ($this->value > $this->settings->max) {
                     array_push($this->errors, "This field `{$this->key}` can be at most " . $this->settings->max);
                 }

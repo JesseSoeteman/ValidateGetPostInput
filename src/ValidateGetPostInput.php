@@ -278,7 +278,7 @@ class ValidateGetPostInput
     private function validateBoolean(): void
     {
         // Check if the value is a boolean.
-        if (!is_bool($this->value)) {
+        if (!boolval($this->value)) {
             array_push($this->errors, "This field `{$this->key}` is not a boolean");
         }
 

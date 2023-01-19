@@ -22,7 +22,7 @@ use ValidateGetPostInput\ValidateGetPostInput;
  * @version 1.0
  * @since   2023-01-18
  */
-class validateNumber extends ValidateGetPostInput
+class ValidateNumber extends ValidateGetPostInput
 {
     public function __construct($key, $request_type = RequestType::GET, $required = true, $min = -2147483648, $max = 2147483647)
     {

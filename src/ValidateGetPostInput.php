@@ -327,7 +327,7 @@ class ValidateGetPostInput
         }
 
         // Check if the value is a date.
-        if (!$this->settings->date_format == DateFormat::NONE) {
+        if ($this->settings->date_format == DateFormat::NONE) {
             return;
         }
 

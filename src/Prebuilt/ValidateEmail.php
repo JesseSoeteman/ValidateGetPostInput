@@ -9,7 +9,6 @@ use ValidateGetPostInput\ValidateGetPostInput;
 use ValidateGetPostInput\Classes\ValidateInputSettings;
 
 
-
 /**
  * ValidateEmail class to set the settings for the validation.
  * This class is used to validate an email address.

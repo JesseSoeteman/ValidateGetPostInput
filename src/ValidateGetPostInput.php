@@ -185,6 +185,7 @@ class ValidateGetPostInput
                 $this->validateDate();
                 break;
         }
+        
         return $this->errors;
     }
 
@@ -297,6 +298,7 @@ class ValidateGetPostInput
         // Check if there is any data in the json object.
         if (empty($decoded)) {
             array_push($this->errors, "This field `{$this->key}` is empty");
+            return;
         }
 
         // Converting the value to a json object.

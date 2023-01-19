@@ -80,6 +80,9 @@ class ValidateGetPostInput
             case DataType::JSON_OBJECT:
                 $this->value = json_decode("{}");
                 break;
+            case DataType::DATE:
+                $this->value = new DateTime();
+                break;
         }
 
         // check if the data type is compatible with the pattern.

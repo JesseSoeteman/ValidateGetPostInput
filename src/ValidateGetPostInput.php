@@ -85,7 +85,7 @@ class ValidateGetPostInput
         // Validating the value of the $_GET or $_POST input.
         if ($this->settings->required) {
             if (empty($this->value) && $this->value != "0") {
-                array_push($this->errors, "This field {$this->key} is empty");
+                array_push($this->errors, "This field `{$this->key}` is empty");
             }
         }
 

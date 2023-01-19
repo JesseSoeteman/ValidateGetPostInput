@@ -332,7 +332,10 @@ class ValidateGetPostInput
         }
 
         $date = DateTime::createFromFormat($this->settings->date_format, $this->value);
-        array_push($this->errors, $date->format($this->settings->date_format));
+
+        array_push($this->errors, $this->value);
+        array_push($this->errors, DateTime::getLastErrors());
+        
 
         if (!$date || $date->format($this->settings->date_format) != $this->value) {
             array_push($this->errors, "This field `{$this->key}` is not a date");

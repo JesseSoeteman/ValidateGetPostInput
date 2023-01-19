@@ -12,6 +12,8 @@ use ValidateGetPostInput\ValidateGetPostInput;
  * ValidateID class to set the settings for the validation.
  * This class is used to validate an ID.
  * 
+ * - The request type is GET. (this can be changed to POST)
+ * - The value is required. (this can be changed)
  * - The ID must be a number.
  * - The ID must be at least -1.
  * - The ID can be at most 2147483647.
@@ -20,17 +22,10 @@ use ValidateGetPostInput\ValidateGetPostInput;
  * @version 1.0
  * @since   2023-01-18
  */
-class ValidateID extends ValidateGetPostInput
+class ValidateID extends validateNumber
 {
     public function __construct($key, $request_type = RequestType::GET, $required = true)
     {
-        $settings = new ValidateInputSettings();
-        $settings->input_type = $request_type;
-        $settings->required = $required;
-        $settings->data_type = DataType::INTEGER;
-        $settings->check_min_max = true;
-        $settings->min = -1;
-        $settings->max = 2147483647;
-        parent::__construct($key, $settings);
+        parent::__construct($key, $request_type, $required, -1, 2147483647);
     }
 }

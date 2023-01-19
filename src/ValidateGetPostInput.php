@@ -134,6 +134,9 @@ class ValidateGetPostInput
                 array_push($this->errors, "This field `{$this->key}` is not a number");
                 return $this->errors;
             }
+            
+            // Converting the value to an integer.
+            $this->value = (int) $this->value;
 
             // Validating the value for the set min value.
             if ($this->settings->min != 0) {

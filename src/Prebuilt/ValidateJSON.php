@@ -28,6 +28,7 @@ class ValidateJSON extends ValidateGetPostInput
         $settings->input_type = $request_type;
         $settings->required = $required;
         $settings->data_type = DataType::JSON_OBJECT;
+        $settings->sanitize = false;
         parent::__construct($key, $settings);
     }
 }

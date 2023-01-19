@@ -54,8 +54,8 @@ class ValidateInputSettings
      * @param int $pattern The pattern to validate the input against. 0 = no pattern, 1 = validate email, 2 = regex pattern.
      * @param string $regex_pattern The regex pattern to validate the input against, only used when $pattern = 2.
      * @param bool $isString Whether the input is a string or a number.
-     * @param int $min The minimum length of the input when the input is a string. Otherwise the minimum value of the input as a number.
-     * @param int $max The maximum length of the input when the input is a string. Otherwise the maximum value of the input as a number.
+     * @param int $min The minimum length of the input when the input is a string. Otherwise the minimum value of the input as a number. default value is 0.
+     * @param int $max The maximum length of the input when the input is a string. Otherwise the maximum value of the input as a number. default value is 0.
      */
     public function __construct(
         $input_type = RequestType::GET,
@@ -63,8 +63,8 @@ class ValidateInputSettings
         $pattern = Pattern::NO_PATTERN,
         $regex_pattern = "",
         $isString = true,
-        $min = null,
-        $max = null
+        $min = 0,
+        $max = 0
     ) {
         $this->input_type = $input_type;
         $this->required = $required;

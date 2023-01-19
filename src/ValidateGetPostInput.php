@@ -191,9 +191,9 @@ class ValidateGetPostInput
     /**
      * Get the value of the $_GET or $_POST input.
      *
-     * @return string The value of the $_GET or $_POST input.
+     * @return string|int|float|bool|object The value of the $_GET or $_POST input.
      */
-    public function getValue(): string
+    public function getValue(): string|int|float|bool|object
     {
         return $this->value;
     }
@@ -240,13 +240,15 @@ class ValidateGetPostInput
         }
 
         if ($data_type == DataType::INTEGER) {
-            // Converting the value to an integer.
+            // Converting the string to an integer.
             $this->value = (int) $this->value;
         } else if ($data_type == DataType::FLOAT) {
+            // Check if the value is a float.
             if (!is_float($this->value)) {
                 array_push($this->errors, "This field `{$this->key}` is not a float");
                 return;
             }
+            // Converting the string to a float.
             $this->value = (float) $this->value;
         }
 

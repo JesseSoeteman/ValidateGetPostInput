@@ -245,7 +245,7 @@ class ValidateGetPostInput
             $this->value = (int) $this->value;
         } else if ($data_type == DataType::FLOAT) {
             // Check if the value is a float.
-            if (!is_float($this->value)) {
+            if (!is_float($this->value + 0)) {
                 array_push($this->errors, "This field `{$this->key}` is not a float");
                 return;
             }

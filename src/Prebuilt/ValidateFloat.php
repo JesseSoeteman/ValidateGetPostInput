@@ -10,7 +10,7 @@ use ValidateGetPostInput\ValidateGetPostInput;
 
 /**
  * ValidateFloat class to set the settings for the validation.
- * This class is used to validate an ID.
+ * This class is used to validate a floating point number.
  * 
  * - The value must be a number.
  * - The request type is GET. (this can be changed to POST)
@@ -22,7 +22,7 @@ use ValidateGetPostInput\ValidateGetPostInput;
  * @version 1.0
  * @since   2023-01-18
  */
-class validateNumber extends ValidateGetPostInput
+class validateFloat extends ValidateGetPostInput
 {
     public function __construct($key, $request_type = RequestType::GET, $required = true, $min = -2147483648, $max = 2147483647)
     {

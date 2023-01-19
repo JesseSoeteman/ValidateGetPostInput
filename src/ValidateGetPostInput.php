@@ -311,6 +311,10 @@ class ValidateGetPostInput
      */
     private function validateDate(): void
     {
+        // Validating as a string first.
+        $this->validateString();
+
+        // Check if the value is a date.
         if (!$this->settings->date_format == DateFormat::NONE) {
             return;
         }

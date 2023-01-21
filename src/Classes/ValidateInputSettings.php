@@ -16,7 +16,6 @@ use ValidateGetPostInput\Statics\DateFormat;
  */
 class ValidateInputSettings
 {
-
     /**
      * @var int $input_type The type of input to validate.
      * 0 = $_GET, 
@@ -75,7 +74,6 @@ class ValidateInputSettings
     /**
      * Constructor for the ValidateInputSettings class.
      *
-     * @param int $input_type The type of input to validate. 0 = $_GET, 1 = $_POST.
      * @param bool $required Whether the input is required.
      * @param int $pattern The pattern to validate the input against. 0 = no pattern, 1 = validate email, 2 = regex pattern.
      * @param string $regex_pattern The regex pattern to validate the input against, only used when $pattern = 2.
@@ -88,7 +86,6 @@ class ValidateInputSettings
      * @param string $date_format Whether to check if the input is a valid date. (Only works with DataType::DATE) default value is none.
      */
     public function __construct(
-        $input_type = RequestType::GET,
         $required = false,
         $pattern = Pattern::NONE,
         $regex_pattern = "",
@@ -100,7 +97,6 @@ class ValidateInputSettings
         $sanitize = true,
         $date_format = DateFormat::NONE
     ) {
-        $this->input_type = $input_type;
         $this->required = $required;
         $this->pattern = $pattern;
         $this->regex_pattern = $regex_pattern;
@@ -111,5 +107,10 @@ class ValidateInputSettings
         $this->trim = $trim;
         $this->sanitize = $sanitize;
         $this->date_format = $date_format;
+
+        $this->input_type = RequestType::GET;
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $this->input_type = RequestType::POST;
+        }
     }
 }

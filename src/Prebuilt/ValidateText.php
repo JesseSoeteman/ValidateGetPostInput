@@ -2,7 +2,6 @@
 
 namespace ValidateGetPostInput\Prebuilt;
 
-use ValidateGetPostInput\Statics\RequestType;
 use ValidateGetPostInput\Statics\DataType;
 
 use ValidateGetPostInput\ValidateGetPostInput;
@@ -22,10 +21,9 @@ use ValidateGetPostInput\Classes\ValidateInputSettings;
  */
 class ValidateText extends ValidateGetPostInput
 {
-    public function __construct($key, $request_type = RequestType::GET, $required = true, $max_lenght = 65535)
+    public function __construct($key, $required = true, $max_lenght = 65535)
     {
         $settings = new ValidateInputSettings();
-        $settings->input_type = $request_type;
         $settings->required = $required;
         $settings->data_type = DataType::STRING;
         $settings->check_min_max = true;

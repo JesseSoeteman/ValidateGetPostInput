@@ -48,7 +48,7 @@ class ValidateMultiple
                 throw new \Exception("The key '$key' is already in use. (ValidateMultiple)");
             }
 
-            $validations[$key] = $validation;
+            $this->validations[$key] = $validation;
         }
     }
 
@@ -62,7 +62,7 @@ class ValidateMultiple
         $this->errors = array();
         $this->values = array();
 
-        foreach ($this->validations as $validation) {
+        foreach ($this->validations as $key => $validation) {
             $this->errors[] = $validation->validate();
             $this->values[$validation->getKeyValue()] = $validation->getValue();
         }

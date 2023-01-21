@@ -67,6 +67,8 @@ class ValidateMultiple
             $this->values[$validation->getKeyValue()] = $validation->getValue();
         }
 
+        var_dump($this->values);
+
         return $this->errors;
     }
 

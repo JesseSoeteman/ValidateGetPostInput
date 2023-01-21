@@ -24,10 +24,9 @@ use ValidateGetPostInput\Classes\ValidateInputSettings;
  */
 class ValidateVarchar255Regex extends ValidateGetPostInput
 {
-    public function __construct($key, $reqex, $request_type = RequestType::GET, $required = true, $max_lenght = 255)
+    public function __construct($key, $reqex, $required = true, $max_lenght = 255)
     {
         $settings = new ValidateInputSettings();
-        $settings->input_type = $request_type;
         $settings->required = $required;
         $settings->pattern = Pattern::REGEX;
         $settings->regex_pattern = $reqex;

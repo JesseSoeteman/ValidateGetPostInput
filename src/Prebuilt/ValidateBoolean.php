@@ -2,7 +2,6 @@
 
 namespace ValidateGetPostInput\Prebuilt;
 
-use ValidateGetPostInput\Statics\RequestType;
 use ValidateGetPostInput\Statics\DataType;
 
 use ValidateGetPostInput\Classes\ValidateInputSettings;
@@ -22,10 +21,9 @@ use ValidateGetPostInput\ValidateGetPostInput;
  */
 class ValidateBoolean extends ValidateGetPostInput
 {
-    public function __construct($key, $request_type = RequestType::GET, $required = true)
+    public function __construct($key, $required = true)
     {
         $settings = new ValidateInputSettings();
-        $settings->input_type = $request_type;
         $settings->required = $required;
         $settings->data_type = DataType::BOOLEAN;
         parent::__construct($key, $settings);

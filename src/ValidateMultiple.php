@@ -63,11 +63,9 @@ class ValidateMultiple
         $this->values = array();
 
         foreach ($this->validations as $key => $validation) {
-            $this->errors[] = $validation->validate();
+            $this->errors = array_merge($this->errors, $validation->validate());
             $this->values[$validation->getKeyValue()] = $validation->getValue();
         }
-
-        var_dump($this->values);
 
         return $this->errors;
     }

@@ -55,7 +55,7 @@ class ValidateMultiple
     /**
      * Validate the validations and store the errors and values.
      * 
-     * @return void
+     * @return array The errors of the validations all together.
      */
     public function validate()
     {

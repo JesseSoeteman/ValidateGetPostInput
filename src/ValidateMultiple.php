@@ -66,15 +66,7 @@ class ValidateMultiple
             $this->errors[] = $validation->validate();
             $this->values[$validation->getKeyValue()] = $validation->getValue();
         }
-    }
 
-    /**
-     * Get the errors of the validations.
-     * 
-     * @return array The errors of the validations.
-     */
-    public function getErrors()
-    {
         return $this->errors;
     }
 

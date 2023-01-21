@@ -203,6 +203,16 @@ class ValidateGetPostInput
     }
 
     /**
+     * Get the key of the $_GET or $_POST input.
+     *
+     * @return string The key of the $_GET or $_POST input.
+     */
+    public function getKeyValue(): string
+    {
+        return $this->key;
+    }
+
+    /**
      * Validate the value of the $_GET or $_POST input as a string.
      *
      */

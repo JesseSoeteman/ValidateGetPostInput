@@ -2,7 +2,6 @@
 
 namespace ValidateGetPostInput\Prebuilt;
 
-use ValidateGetPostInput\Statics\RequestType;
 use ValidateGetPostInput\Statics\DataType;
 
 use ValidateGetPostInput\Classes\ValidateInputSettings;
@@ -13,7 +12,6 @@ use ValidateGetPostInput\ValidateGetPostInput;
  * This class is used to validate a number.
  * 
  * - The value must be a number.
- * - The request type is GET. (this can be changed to POST)
  * - The value is required. (this can be changed)
  * - The value must be at least -2147483648. (this can be changed)
  * - The value can be at most 2147483647. (this can be changed)
@@ -24,10 +22,9 @@ use ValidateGetPostInput\ValidateGetPostInput;
  */
 class ValidateNumber extends ValidateGetPostInput
 {
-    public function __construct($key, $request_type = RequestType::GET, $required = true, $min = -2147483648, $max = 2147483647)
+    public function __construct($key, $required = true, $min = -2147483648, $max = 2147483647)
     {
         $settings = new ValidateInputSettings();
-        $settings->input_type = $request_type;
         $settings->required = $required;
         $settings->data_type = DataType::INTEGER;
         $settings->check_min_max = true;

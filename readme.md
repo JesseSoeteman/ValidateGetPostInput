@@ -45,26 +45,17 @@ The prebuilt classes except for the [ValidateVarchar255Regex](#validatevarchar25
 ```php
 use ValidateGetPostInput\Prebuilt\ValidateBoolean;
 
-$boolean = false;
-{
-    $_boolean = new ValidateBoolean("boolean"); // The name of the input, so $_GET["boolean"]
-    $errors[] = $_boolean->validate(); // This returns an array with errors if there are any, returns an empty array if there are no errors.
-    $boolean = $_boolean->getValue(); // This returns the value of the input.
-}
+$_boolean = new ValidateBoolean("boolean"); // The name of the input, so $_GET["boolean"] or $_POST["boolean"]
+$errors += $_boolean->validate(); // This returns an array with errors if there are any, returns an empty array if there are no errors.
+$boolean = $_boolean->getValue(); // This returns the value of the input.
 ```
-
-To use a post request instead of a get request, you can use the second parameter of the constructor. <br/> 
-The third parameter is if the input is required, default is true.
+If you dont want to make a parameter required, you can set the second parameter to false.
 ```php
 use ValidateGetPostInput\Prebuilt\ValidateBoolean;
-use ValidateGetPostInput\Statics\RequestType;
 
-$boolean = false;
-{
-    $_boolean = new ValidateBoolean("boolean", RequestType::POST, false); // The name of the input, so $_POST["boolean"]
-    $errors[] = $_boolean->validate(); 
-    $boolean = $_boolean->getValue();
-}
+$_boolean = new ValidateBoolean("boolean", false);
+$errors += $_boolean->validate(); 
+$boolean = $_boolean->getValue();
 ```
 
 
@@ -73,48 +64,36 @@ $boolean = false;
 ```php
 use ValidateGetPostInput\Prebuilt\ValidateNumber;
 
-$number = 0;
-{
-    $_number = new ValidateNumber("number"); // The name of the input, so $_GET["number"]
-    $errors[] = $_number->validate(); // This returns an array with errors if there are any, returns an empty array if there are no errors.
-    $number = $_number->getValue(); // This returns the value of the input.
-}
+$_number = new ValidateNumber("number"); // The name of the input, so $_GET["number"] or $_POST["number"]
+$errors += $_number->validate(); // This returns an array with errors if there are any, returns an empty array if there are no errors.
+$number = $_number->getValue(); // This returns the value of the input.
 ```
 
 ### ValidateFloat
 ```php
 use ValidateGetPostInput\Prebuilt\ValidateFloat;
 
-$float = 0.0;
-{
-    $_float = new ValidateFloat("float"); // The name of the input, so $_GET["float"]
-    $errors[] = $_float->validate(); // This returns an array with errors if there are any, returns an empty array if there are no errors.
-    $float = $_float->getValue(); // This returns the value of the input.
-}
+$_float = new ValidateFloat("float"); // The name of the input, so $_GET["float"] or $_POST["float"]
+$errors += $_float->validate(); // This returns an array with errors if there are any, returns an empty array if there are no errors.
+$float = $_float->getValue(); // This returns the value of the input.
 ```
 
 ### ValidateText
 ```php
 use ValidateGetPostInput\Prebuilt\ValidateText;
 
-$text = "";
-{
-    $_text = new ValidateText("text"); // The name of the input, so $_GET["text"]
-    $errors[] = $_text->validate(); // This returns an array with errors if there are any, returns an empty array if there are no errors.
-    $text = $_text->getValue(); // This returns the value of the input.
-}
+$_text = new ValidateText("text"); // The name of the input, so $_GET["text"] or $_POST["text"]
+$errors += $_text->validate(); // This returns an array with errors if there are any, returns an empty array if there are no errors.
+$text = $_text->getValue(); // This returns the value of the input.
 ```
 
 ### ValidateJSON
 ```php
 use ValidateGetPostInput\Prebuilt\ValidateJSON;
 
-$json = [];
-{
-    $_json = new ValidateJSON("json"); // The name of the input, so $_GET["json"]
-    $errors[] = $_json->validate(); // This returns an array with errors if there are any, returns an empty array if there are no errors.
-    $json = $_json->getValue(); // This returns the value of the input.
-}
+$_json = new ValidateJSON("json"); // The name of the input, so $_GET["json"] or $_POST["json"]
+$errors += $_json->validate(); // This returns an array with errors if there are any, returns an empty array if there are no errors.
+$json = $_json->getValue(); // This returns the value of the input.
 ```
 
 ### ValidateID
@@ -122,64 +101,84 @@ The minimum value of the id is 1, and the maximum value is 2147483647.
 ```php
 use ValidateGetPostInput\Prebuilt\ValidateID;
 
-$id = 0;
-{
-    $_id = new ValidateID("id"); // The name of the input, so $_GET["id"]
-    $errors[] = $_id->validate(); // This returns an array with errors if there are any, returns an empty array if there are no errors.
-    $id = $_id->getValue(); // This returns the value of the input.
-}
+$_id = new ValidateID("id"); // The name of the input, so $_GET["id"] or $_POST["id"]
+$errors += $_id->validate(); // This returns an array with errors if there are any, returns an empty array if there are no errors.
+$id = $_id->getValue(); // This returns the value of the input.
 ```
 
 ### ValidateEmail
 ```php
 use ValidateGetPostInput\Prebuilt\ValidateEmail;
 
-$email = "";
-{
-    $_email = new ValidateEmail("email"); // The name of the input, so $_GET["email"]
-    $errors[] = $_email->validate(); // This returns an array with errors if there are any, returns an empty array if there are no errors.
-    $email = $_email->getValue(); // This returns the value of the input.
-}
+$_email = new ValidateEmail("email"); // The name of the input, so $_GET["email"] or $_POST["email"]
+$errors[] = $_email->validate(); // This returns an array with errors if there are any, returns an empty array if there are no errors.
+$email = $_email->getValue(); // This returns the value of the input.
 ```
 
 ### ValidateVarchar255
 ```php
 use ValidateGetPostInput\Prebuilt\ValidateVarchar255;
 
-$varchar255 = "";
-{
-    $_varchar255 = new ValidateVarchar255("varchar255"); // The name of the input, so $_GET["varchar255"]
-    $errors[] = $_varchar255->validate(); // This returns an array with errors if there are any, returns an empty array if there are no errors.
-    $varchar255 = $_varchar255->getValue(); // This returns the value of the input.
-}
+$_varchar255 = new ValidateVarchar255("varchar255"); // The name of the input, so $_GET["varchar255"] or $_POST["varchar255"]
+$errors += $_varchar255->validate(); // This returns an array with errors if there are any, returns an empty array if there are no errors.
+$varchar255 = $_varchar255->getValue(); // This returns the value of the input.
 ```
 
 ### ValidateVarchar255Regex
 ```php
 use ValidateGetPostInput\Prebuilt\ValidateVarchar255Regex;
 
-$varchar255Regex = "";
-{
-    $_varchar255Regex = new ValidateVarchar255Regex("varchar255Regex", "/^[a-zA-Z0-9]+$/"); // The name of the input, so $_GET["varchar255Regex"]
-    $errors[] = $_varchar255Regex->validate(); // This returns an array with errors if there are any, returns an empty array if there are no errors.
-    $varchar255Regex = $_varchar255Regex->getValue(); // This returns the value of the input.
-}
+$_varchar255Regex = new ValidateVarchar255Regex("varchar255Regex", "/^[a-zA-Z0-9]+$/"); // The name of the input, so $_GET["varchar255Regex"] or $_POST["varchar255Regex"], the second parameter is the regex, the third parameter is if the input is required, default is true.
+$errors += $_varchar255Regex->validate(); // This returns an array with errors if there are any, returns an empty array if there are no errors.
+$varchar255Regex = $_varchar255Regex->getValue(); // This returns the value of the input.
 ```
 
 ### ValidateDate
 The default date format is 'Y-m-d H:i:s', but you can change it with the fourth parameter.
 ```php
 use ValidateGetPostInput\Prebuilt\ValidateDate;
-use ValidateGetPostInput\Statics\RequestType;
 use ValidateGetPostInput\Statics\DateFormat;
 
-$date = "";
-{
-    $_date = new ValidateDate("date", RequestType::GET, true, DateFormat::YYYY_MM_DD); // The name of the input, so $_GET["date"], the third parameter is if the input is required, default is true. The fourth parameter is the date format, default is 'Y-m-d H:i:s'.
-    $errors[] = $_date->validate(); // This returns an array with errors if there are any, returns an empty array if there are no errors.
-    $date = $_date->getValue(); // This returns the value of the input.
-}
+$_date = new ValidateDate("date", true, DateFormat::YYYY_MM_DD); // The name of the input, so $_GET["date"] or $_POST["date"], the second parameter is if the input is required, default is true. The third parameter is the date format, default is 'Y-m-d H:i:s'.
+$errors += $_date->validate(); // This returns an array with errors if there are any, returns an empty array if there are no errors.
+$date = $_date->getValue(); // This returns the value of the input.
 ```
+
+## How to use ValidateMultiple?
+ValidateMultiple lets you validate multiple inputs at once.
+
+```php
+use ValidateGetPostInput\ValidateMultiple;
+
+use ValidateGetPostInput\Prebuilt\ValidateID;
+use ValidateGetPostInput\Prebuilt\ValidateVarchar255;
+use ValidateGetPostInput\Prebuilt\ValidateText;
+
+```
+Be sure to use a try catch block, because if there is an error, it will throw an exception.
+```php
+try {
+    $validations = new ValidateMultiple([
+        new ValidateID("id"),
+        new ValidateVarchar255("name"),
+        new ValidateText("description"),
+        new ValidateVarchar255("link")
+    ]);
+} catch (Exception $e) {
+    $erros += $e->getMessage();
+    // Do something with the errors
+    exit();
+}
+$error += $validations->validate();
+// Check if the validation faid
+if (count($errors) > 0) {
+    // Do something with the errors
+    exit();
+}
+// Get the validated data as an key value array
+$inputData = $validations->getValues();
+```
+
 
 ## License
 

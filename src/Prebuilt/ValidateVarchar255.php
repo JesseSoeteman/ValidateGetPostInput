@@ -19,8 +19,8 @@ use ValidateGetPostInput\Prebuilt\ValidateText;
  */
 class ValidateVarchar255 extends ValidateText
 {
-    public function __construct($key, $request_type = RequestType::GET, $required = true)
+    public function __construct($key, $required = true)
     {
-        parent::__construct($key, $request_type, $required, 255);
+        parent::__construct($key, $required, 255);
     }
 }

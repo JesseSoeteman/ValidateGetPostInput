@@ -2,7 +2,6 @@
 
 namespace ValidateGetPostInput\Prebuilt;
 
-use ValidateGetPostInput\Statics\RequestType;
 use ValidateGetPostInput\Statics\DataType;
 use ValidateGetPostInput\Statics\DateFormat;
 
@@ -22,10 +21,9 @@ use ValidateGetPostInput\Classes\ValidateInputSettings;
  */
 class ValidateDate extends ValidateGetPostInput
 {
-    public function __construct($key, $request_type = RequestType::GET, $required = true, $date_format = DateFormat::YYYY_MM_DD_HH_MM_SS)
+    public function __construct($key, $required = true, $date_format = DateFormat::YYYY_MM_DD_HH_MM_SS)
     {
         $settings = new ValidateInputSettings();
-        $settings->input_type = $request_type;
         $settings->required = $required;
         $settings->data_type = DataType::DATE;
         $settings->date_format = $date_format;

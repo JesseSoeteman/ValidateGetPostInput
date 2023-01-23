@@ -6,7 +6,6 @@ namespace ValidateGetPostInput\Prebuilt;
  * ValidateID class to set the settings for the validation.
  * This class is used to validate an ID.
  * 
- * - The request type is GET. (this can be changed to POST)
  * - The value is required. (this can be changed)
  * - The ID must be a number.
  * - The ID must be at least -1.

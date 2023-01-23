@@ -40,30 +40,30 @@ class ValidateMultiple
         // Validate the validations and store them by key.
         foreach ($validations as $validation) {
             if (!($validation instanceof ValidateGetPostInput)) {
-                throw new \Exception("The validation must be an instance of ValidateGetPostInput.");
+                throw new \Exception("The validation must be an instance of ValidateGetPostInput. (ValidateMultiple)");
             }
             $key = $validation->getKeyValue();
 
             if (array_key_exists($key, $this->validations)) {
-                throw new \Exception("The key '$key' is already in use.");
+                throw new \Exception("The key '$key' is already in use. (ValidateMultiple)");
             }
 
-            $validations[$key] = $validation;
+            $this->validations[$key] = $validation;
         }
     }
 
     /**
      * Validate the validations and store the errors and values.
      * 
-     * @return void
+     * @return array The errors of the validations all together.
      */
     public function validate()
     {
         $this->errors = array();
         $this->values = array();
 
-        foreach ($this->validations as $validation) {
-            $this->errors[] = $validation->validate();
+        foreach ($this->validations as $key => $validation) {
+            $this->errors = array_merge($this->errors, $validation->validate());
             $this->values[$validation->getKeyValue()] = $validation->getValue();
         }
 
@@ -81,8 +81,8 @@ class ValidateMultiple
      */
     public function getValue(string $key)
     {
-        if (!array_key_exists($key, $this->values)) {
-            throw new \Exception("The key '$key' does not exist.");
+        if (!isset($this->values[$key])) {
+            throw new \Exception("The key '$key' does not exist. (ValidateMultiple)");
         }
 
         return $this->values[$key];

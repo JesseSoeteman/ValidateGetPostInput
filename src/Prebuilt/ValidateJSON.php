@@ -11,7 +11,6 @@ use ValidateGetPostInput\ValidateGetPostInput;
  * ValidateJSON class to set the settings for the validation.
  * This class is used to validate a JSON object.
  * 
- * - The request type is GET. (this can be changed to POST)
  * - The value is required. (this can be changed)
  * - The value must be a JSON object.
  *

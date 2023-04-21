@@ -2,6 +2,11 @@
 
 namespace ValidateGetPostInput\Statics;
 
+/**
+ * Class DataType
+ * 
+ * Static class to hold the data types
+ */
 abstract class DataType
 {
     const STRING = 0;

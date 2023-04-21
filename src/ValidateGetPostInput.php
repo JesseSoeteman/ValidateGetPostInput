@@ -20,7 +20,6 @@ use ValidateGetPostInput\Classes\ValidateInputSettings;
  */
 class ValidateGetPostInput
 {
-
     /**
      * @var string $key The key of the $_GET or $_POST input.
      */
@@ -54,8 +53,8 @@ class ValidateGetPostInput
      * @param ValidateInputSettings $settings The settings for the validation.
      */
     public function __construct($key, $settings)
-    {
-        // Checking if the the value of the key is set.
+    {   
+        // Setting the key and settings. If the settings are empty, the default settings will be used.
         $this->key = $key;
         if (empty($settings)) {
             $this->settings = new ValidateInputSettings();
@@ -63,7 +62,8 @@ class ValidateGetPostInput
             $this->settings = $settings;
         }
 
-        // Setting the default value for the value of the $_GET or $_POST input.
+        // Setting the default value for the value of the $_GET or $_POST input. 
+        // If the value is optional, the default value will be be set below.
         switch ($this->settings->data_type) {
             case DataType::STRING:
                 $this->value = "";
@@ -109,7 +109,7 @@ class ValidateGetPostInput
      */
     public function validate(): array
     {
-        // Getting the value of the $_GET or $_POST input.
+        // Getting the value of the $_GET or $_POST input. Based on the input type.
         {
             $isset = false;
             switch ($this->settings->input_type) {
@@ -126,6 +126,7 @@ class ValidateGetPostInput
                     }
                     break;
             }
+            // If the value is not set and the value is required, return an error.
             if (!$isset) {
                 if ($this->settings->required) {
                     array_push($this->errors, "This field `{$this->key}` is required");

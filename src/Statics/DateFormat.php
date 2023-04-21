@@ -2,6 +2,11 @@
 
 namespace ValidateGetPostInput\Statics;
 
+/**
+ * Class DateFormat
+ * 
+ * Static class to hold the date formats
+ */
 abstract class DateFormat
 {
     const NONE = 0;

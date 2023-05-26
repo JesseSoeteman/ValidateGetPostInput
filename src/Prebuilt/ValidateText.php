@@ -29,6 +29,7 @@ class ValidateText extends ValidateGetPostInput
         $settings->check_min_max = true;
         $settings->min = 1;
         $settings->max = $max_lenght;
+        $settings->sanitize = false;
         parent::__construct($key, $settings);
     }
 }
